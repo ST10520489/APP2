@@ -174,7 +174,7 @@ public class Messaging {
            System.out.println("Total messages sent: " + messageCount);
     }
 
-    
+    // stored messages menu
     public static void storedMessagesMenu() {
 
         System.out.println("\nStored Messages Menu:");
