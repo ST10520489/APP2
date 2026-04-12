@@ -15,13 +15,11 @@ public class Messaging {
     static Scanner input = new Scanner(System.in);
     static int messageCount = 0;
 
-    // Instance variables
     private String messageID;
     private String recipient;
     private String messageText;
     private int messageNumber;
-
-    // Constructor
+    
     public Messaging(String messageID, String recipient, String messageText, int messageNumber) {
         this.messageID = messageID;
         this.recipient = recipient;
@@ -35,7 +33,7 @@ public class Messaging {
     static String[] messageHashes;
     static String[] recipients;
 
-    // NEW Part 3 arrays
+    // Part 3 arrays
     static String[] sentMessages;
     static String[] disregardedMessages;
     static String[] storedMessages;
@@ -48,10 +46,10 @@ public class Messaging {
     public static void main(String[] args) {
 
         System.out.print("Enter username: ");
-        String username = input.nextLine();
+        String username = input.nextLine().trim();
 
         System.out.print("Enter password: ");
-        String password = input.nextLine();
+        String password = input.nextLine().trim();
 
         if (!loginUser(username, password)) {
             System.out.println("Login failed. Cannot send messages.");
@@ -64,7 +62,7 @@ public class Messaging {
         int totalMessages = input.nextInt();
         input.nextLine();
 
-        // Initialize arrays
+        // Initialize the arrays
         messages = new String[totalMessages];
         messageIDs = new String[totalMessages];
         messageHashes = new String[totalMessages];
@@ -110,7 +108,7 @@ public class Messaging {
         }
     }
 
-    // SEND MESSAGES
+    // Send messages
     public static void sendMessages(int totalMessages) {
 
         while (messageCount < totalMessages) {
@@ -156,9 +154,10 @@ public class Messaging {
                     displayMessage(messageID, messageHash, recipient, message);
                     break;
 
-                case 2: // DISREGARD
+                case 2: // DISREGARD or DELETE
                     disregardedMessages[messageCount] = message;
                     System.out.println("Message disregarded");
+                    messageCount++;
                     break;
 
                 case 3: // STORE
@@ -168,12 +167,14 @@ public class Messaging {
                     recipients[messageCount] = recipient;
 
                     System.out.println("Message stored");
+                    messageCount++;
                     break;
             }
         }
+           System.out.println("Total messages sent: " + messageCount);
     }
 
-    // STORED MENU
+    
     public static void storedMessagesMenu() {
 
         System.out.println("\nStored Messages Menu:");
@@ -209,7 +210,7 @@ public class Messaging {
         }
     }
 
-    // FEATURES
+    
     public static void displaySendersAndRecipients() {
         for (int i = 0; i < storedMessages.length; i++) {
             if (storedMessages[i] != null) {
@@ -250,7 +251,7 @@ public class Messaging {
         String rec = input.nextLine();
 
         for (int i = 0; i < recipients.length; i++) {
-            if (recipients[i] != null && recipients[i].equals(rec)) {
+            if (storedMessages[i] != null && recipients[i].equals(rec)) {
                 System.out.println(storedMessages[i]);
             }
         }
@@ -289,9 +290,48 @@ public class Messaging {
                 System.out.println(msg);
             }
         }
+        }
+    public static void populateTestData() {
+
+    // Message 1 (Sent)
+    recipients[0] = "+27834557896";
+    messages[0] = "Did you get the cake?";
+    sentMessages[0] = messages[0];
+    messageIDs[0] = generateMessageID();
+    messageHashes[0] = createMessageHash(messageIDs[0], messages[0], 0);
+
+    // Message 2 (Stored)
+    recipients[1] = "+27838884567";
+    messages[1] = "Where are you? You are late! I have asked you to be on time.";
+    storedMessages[1] = messages[1];
+    messageIDs[1] = generateMessageID();
+    messageHashes[1] = createMessageHash(messageIDs[1], messages[1], 1);
+
+    // Message 3
+    recipients[2] = "+27834484567";
+    messages[2] = "Yohoooo, I am at your gate.";
+    disregardedMessages[2] = messages[2];
+    messageIDs[2] = generateMessageID();
+    messageHashes[2] = createMessageHash(messageIDs[2], messages[2], 2);
+
+    // Message 4 
+    recipients[3] = "0838884567";
+    messages[3] = "It is dinner time !";
+    sentMessages[3] = messages[3];
+    messageIDs[3] = generateMessageID();
+    messageHashes[3] = createMessageHash(messageIDs[3], messages[3], 3);
+
+    // Message 5 (Stored)
+    recipients[4] = "+27838884567";
+    messages[4] = "Ok, I am leaving without you.";
+    storedMessages[4] = messages[4];
+    messageIDs[4] = generateMessageID();
+    messageHashes[4] = createMessageHash(messageIDs[4], messages[4], 4);
+
+    messageCount = 5;
+
     }
 
-    // HELPERS
     public static String generateMessageID() {
         Random rand = new Random();
         long number = 1000000000L + (long)(rand.nextDouble() * 9000000000L);
