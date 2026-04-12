@@ -14,7 +14,7 @@ import java.util.Random;
 public class Messaging {
     static Scanner input = new Scanner(System.in);
     static int messageCount = 0;
-
+//part 3 was addded
     private String messageID;
     private String recipient;
     private String messageText;
@@ -174,7 +174,7 @@ public class Messaging {
            System.out.println("Total messages sent: " + messageCount);
     }
 
-    
+    // stored messages menu
     public static void storedMessagesMenu() {
 
         System.out.println("\nStored Messages Menu:");
