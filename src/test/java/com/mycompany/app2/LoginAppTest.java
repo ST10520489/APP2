@@ -4,14 +4,12 @@
  */
 package com.mycompany.app2;
 
-
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 /**
  *
  * @author Alulutho
  */
+import org.junit.Test;
+import static org.junit.Assert.*;
 public class LoginAppTest {
     
     public LoginAppTest() {
