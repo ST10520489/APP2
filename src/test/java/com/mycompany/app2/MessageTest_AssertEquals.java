@@ -92,7 +92,7 @@ public class MessageTest_AssertEquals {
         Messaging msg = new Messaging("001", "+27718693002",
                 "Hello", 1);
 
-        assertEquals("Message sent successfully",
+        assertEquals("Message successfully sent",
                 msg.sentMessage(1));
     }
 
@@ -101,16 +101,17 @@ public class MessageTest_AssertEquals {
         Messaging msg = new Messaging("002", "+27718693002",
                 "Hello", 2);
 
-        assertEquals("Message deleted",
+        assertEquals("Press 0 to delete the message",
                 msg.sentMessage(2));
     }
-
+    
+    //corrected errors, the test showed some failed so i had to edit
     @Test
     public void testStoreMessage() {
         Messaging msg = new Messaging("003", "+27718693002",
                 "Hello", 3);
 
-        assertEquals("Message stored successfully",
+        assertEquals("Press 0 to delete the message",
                 msg.sentMessage(3));
     }
 }

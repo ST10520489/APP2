@@ -14,7 +14,7 @@ import java.util.Random;
 public class Messaging {
     static Scanner input = new Scanner(System.in);
     static int messageCount = 0;
-//part 3 was addded
+//part 3 was incorparated into this
     private String messageID;
     private String recipient;
     private String messageText;
