@@ -18,7 +18,7 @@ public class Messaging {
     public static void main(String[] args){
         System.out.println();
         System.out.println("Welcome to QuickChat");
-        System.out.print("How many messages would you like to send?: ");;
+        System.out.print("How many messages would you like to send?: ");
         int maxMessages =  input.nextInt();      
         input.nextLine();
 
@@ -66,7 +66,7 @@ public class Messaging {
       
         String recipient = "";
         while(true){
-            System.out.print("Recipient (+27): ");;
+            System.out.print("Recipient (+27): ");
             recipient = input.nextLine();
             
             if (recipient.startsWith("+27") && recipient.length() == 12) {
@@ -99,6 +99,7 @@ public class Messaging {
     }
     //part 3 added
     public static void storedMessagesMenu() {
+    System.out.println("====Stored Message Menu====");
     System.out.println("1. Display stored messages");
     System.out.println("2. Display longest message");
     System.out.println("3. Search message ID");
