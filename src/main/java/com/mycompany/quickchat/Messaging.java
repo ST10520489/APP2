@@ -100,7 +100,7 @@ public class Messaging {
     //part 3 added
     public static void storedMessagesMenu() {
     System.out.println("1. Display stored messages");
-    System.out.println("2. Longest message");
+    System.out.println("2. Display longest message");
     System.out.println("3. Search message ID");
     System.out.println("4. Search recipient");
     System.out.println("5. Delete message hash");
