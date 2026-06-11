@@ -8,11 +8,9 @@ package com.mycompany.quickchat;
  */
 import java.util.Scanner;
 public class QuickChat {
-
     static Scanner scanner = new Scanner(System.in);
-
+    
     public static void main(String[] args) {
-
         Login user = new Login();
 
         System.out.println("===== REGISTER =====");
@@ -63,8 +61,6 @@ public class QuickChat {
         }
         System.out.println(user.registerUser( username, password, phone));
                 
-   
-
         System.out.println();
         // Login
         while (true) {
