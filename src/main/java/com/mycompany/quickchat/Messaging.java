@@ -18,15 +18,17 @@ public class Messaging {
     public static void main(String[] args){
         System.out.println();
         System.out.println("Welcome to QuickChat");
-        System.out.println("How many messages would you like to send?");
+        System.out.print("How many messages would you like to send?: ");;
         int maxMessages =  input.nextInt();      
         input.nextLine();
 
         while(true){
-            System.out.println("===== QUICKCHAT MENU =====");
+            System.out.println("=====QUICKCHAT MENU=====");
             System.out.println("1) Send Message");
             System.out.println("2) Show Sent Messages");
             System.out.println("3) Quit");
+            //adding option 4) for part 3 
+            System.out.println("4) Stored Messages");
             System.out.print("Enter valid option: ");
             int choice = input.nextInt();
             input.nextLine();
@@ -45,9 +47,13 @@ public class Messaging {
                     break;
 
                 case 3:
-                    System.out.println("Total messages sent: " +  Message.returnTotalMessages());
+                    System.out.print("Total messages sent: " +  Message.returnTotalMessages());
                     System.exit(0);
-
+                
+                case 4:
+                    storedMessagesMenu();
+                    break;
+                    
                 default:
                     System.out.println("Invalid choice");
             }
@@ -60,7 +66,7 @@ public class Messaging {
       
         String recipient = "";
         while(true){
-            System.out.println("Recipient (+27): ");
+            System.out.print("Recipient (+27): ");;
             recipient = input.nextLine();
             
             if (recipient.startsWith("+27") && recipient.length() == 12) {
@@ -70,10 +76,9 @@ public class Messaging {
                 System.out.println("Recipient invalid, please try again");
             }
         }
-        
         String message = "";
         while(true){
-            System.out.println("Enter message: ");
+            System.out.print("Enter message: ");
             message = input.nextLine();
  
             if (message.length() > 250) {
@@ -92,5 +97,51 @@ public class Messaging {
         msg.createMessageHash();
         System.out.println(msg.SentMessage());
     }
+    //part 3 added
+    public static void storedMessagesMenu() {
+    System.out.println("1. Display stored messages");
+    System.out.println("2. Longest message");
+    System.out.println("3. Search message ID");
+    System.out.println("4. Search recipient");
+    System.out.println("5. Delete message hash");
+    System.out.println("6. Display report");
+    System.out.print("Enter valid option: ");
+
+    int choice = input.nextInt();
+    input.nextLine();
+
+    switch(choice) {
+
+        case 1:
+            System.out.println(Message.readStoredMessages());
+            break;
+
+        case 2:
+            System.out.println(Message.getLongestMessage());
+            break;
+
+        case 3:
+            System.out.print("Enter ID: ");
+            String id = input.nextLine();
+            System.out.println(Message.searchMessageID(id));
+            break;
+
+        case 4:
+            System.out.print("Enter recipient: ");
+            String rec = input.nextLine();
+            System.out.println(Message.searchRecipient(rec));
+            break;
+
+        case 5:
+            System.out.print("Enter hash: ");
+            String hash = input.nextLine();
+            System.out.println(Message.deleteMessage(hash));
+            break;
+
+        case 6:
+            System.out.println(Message.displayReport());
+            break;
+    }    
+    }   
 }
 
